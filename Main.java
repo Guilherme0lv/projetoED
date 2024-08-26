@@ -1,4 +1,4 @@
-package lista.exemplo;
+package projetoED;
 
 import java.util.Scanner;
 

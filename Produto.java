@@ -1,4 +1,4 @@
-package lista.exemplo;
+package projetoED;
 
 public class Produto {
 
