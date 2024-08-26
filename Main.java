@@ -21,10 +21,12 @@ public class Main {
                     lista.mostrar();
                     break;
                 case 3:
+                    lista.ordenarNome();
                     break;
                 case 4:
                     break;
                 case 5:
+                    lista.venderProduto();
                     break;
                 case 6:
                     break;

@@ -1,5 +1,9 @@
 package projetoED;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 import java.util.Scanner;
 
 public class Lista {
@@ -35,6 +39,9 @@ public class Lista {
     public void adicionarProduto(){
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("Nome:");
+        String nome = sc.next();
+
         System.out.println("Codigo:");
         int codigo = sc.nextInt();
 
@@ -53,10 +60,19 @@ public class Lista {
         System.out.println("Quantidade no Estoque:");
         int qntdEstoque = sc.nextInt();
 
-        inserir(new Produto(codigo, descricao, marca, valorEntrada, valorSaida, qntdEstoque));
+        inserir(new Produto(nome, codigo, descricao, marca, valorEntrada, valorSaida, qntdEstoque));
     }
 
     public void ordenarNome() {
 
+    }
+
+    public void venderProduto() {
+
+        LocalDateTime d05 = LocalDateTime.now();
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        System.out.println(d05.format(fmt));
+        String teste = d05.format(fmt);
+        System.out.println(teste);
     }
 }
