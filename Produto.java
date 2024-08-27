@@ -22,6 +22,13 @@ public class Produto {
         this.prox = null;
     }
 
+    public Produto(String nome, int codigo, int qntdEstoque, float valorSaida) { // construtor temporario para facilitar testes
+        this.nome = nome;
+        this.codigo = codigo;
+        this.qntdEstoque = qntdEstoque;
+        this.valorSaida = valorSaida;
+    }
+
     @Override
     public String toString() {
         return
