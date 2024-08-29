@@ -33,11 +33,11 @@ public class Produto {
     public String toString() {
         return
                 " Nome: " + nome +
-                " | Código: " + codigo +
-                " | Descrição: " + descricao +
-                " | Marca: " + marca +
-                " | Valor da Entrada: R$" + String.format("%.2f", valorEntrada)+
-                " | Valor de Saida:  " +  String.format("%.2f", valorSaida)+
-                " | Quantidade de estoque: " + qntdEstoque;
+                        " | Código: " + codigo +
+                        " | Descrição: " + descricao +
+                        " | Marca: " + marca +
+                        " | Valor da Entrada: R$" + String.format("%.2f", valorEntrada)+
+                        " | Valor de Saida:  " +  String.format("%.2f", valorSaida)+
+                        " | Quantidade de estoque: " + qntdEstoque;
     }
 }

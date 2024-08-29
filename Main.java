@@ -2,12 +2,12 @@ package projetoED;
 
 public class Main {
     public static void main(String[] args) {
-        Lista lista = new Lista();
+        Lista listaProduto = new Lista();
+        ListaVendas listaVenda = new ListaVendas();
 
         Menu.getMenu();
-        Menu.getFuncoes(lista);
+        Menu.getFuncoes(listaProduto, listaVenda);
 
 
     }
 }
-

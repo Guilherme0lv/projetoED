@@ -39,7 +39,7 @@ public class Menu {
                 + "***************************");
 
     }
-    public static void getFuncoes(Lista lista) {
+    public static void getFuncoes(Lista lista, ListaVendas listaVendas) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Escolha uma opção");
@@ -54,22 +54,22 @@ public class Menu {
                     lista.mostrar();
                     break;
                 case 3:
-
+                    lista.ordernarNomes();
                     break;
                 case 4:
                     lista.repor();
                     break;
                 case 5:
-                    lista.venderProduto();
+                    lista.venderProduto(listaVendas);
                     break;
                 case 6:
                     lista.alterarPrecos();
                     break;
                 case 7:
-
+                    listaVendas.mostrar();
                     break;
                 case 8:
-
+                    System.out.println("Mostrar relatorio de estoque");
                     break;
 
             }
@@ -78,6 +78,4 @@ public class Menu {
 
         }
     }
-
 }
-
