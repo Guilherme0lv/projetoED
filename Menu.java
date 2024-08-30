@@ -39,7 +39,7 @@ public class Menu {
                 + "***************************");
 
     }
-    public static void getFuncoes(Lista lista, ListaVendas listaVendas) {
+    public static void getFuncoes(ListaProdutos listaProdutos, ListaVendas listaVendas, ListaEstoque listaEstoque) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Escolha uma opção");
@@ -48,28 +48,28 @@ public class Menu {
         while (opcao!=9) {
             switch (opcao) {
                 case 1:
-                    lista.adicionarProduto();
+                    listaProdutos.adicionarProduto(listaEstoque);
                     break;
                 case 2:
-                    lista.mostrar();
+                    listaProdutos.mostrar();
                     break;
                 case 3:
-                    lista.ordernarNomes();
+                    listaProdutos.ordernarNomes();
                     break;
                 case 4:
-                    lista.repor();
+                    listaProdutos.repor(listaEstoque);
                     break;
                 case 5:
-                    lista.venderProduto(listaVendas);
+                    listaProdutos.venderProduto(listaVendas, listaEstoque);
                     break;
                 case 6:
-                    lista.alterarPrecos();
+                    listaProdutos.alterarPrecos();
                     break;
                 case 7:
                     listaVendas.mostrar();
                     break;
                 case 8:
-                    System.out.println("Mostrar relatorio de estoque");
+                    listaEstoque.mostrar();
                     break;
 
             }

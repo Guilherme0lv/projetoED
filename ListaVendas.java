@@ -4,7 +4,8 @@ public class ListaVendas {
     Venda inicio;
     Venda fim;
 
-    public  void inserirVenda(Venda novo) {
+    public void inserirVenda(Venda novo) {
+
         if (taVazia()) {
             inicio = novo;
             fim = novo;
@@ -16,10 +17,10 @@ public class ListaVendas {
 
     public void mostrar() {
         if (taVazia()) {
-            System.out.println("Lista de Vendas vazia");
+            System.out.println("Lista de vendas vazia!");
         } else {
             Venda auxiliar = inicio;
-            System.out.println("Lista de Vendas:");
+            System.out.println("Lista de vendas:");
             while (auxiliar!=null) {
                 System.out.println(auxiliar);
                 auxiliar = auxiliar.prox;
