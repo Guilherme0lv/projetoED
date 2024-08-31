@@ -1,5 +1,6 @@
 package projetoED;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -7,11 +8,7 @@ public class Menu {
     public static void getMenu() {
         System.out.println("***************************"
                 + "\n"
-                + "***************************"
-                + "\n"
                 + "********   MENU   *********"
-                + "\n"
-                + "***************************"
                 + "\n"
                 + "***************************"
                 + "\n"
@@ -63,7 +60,7 @@ public class Menu {
                     listaProdutos.venderProduto(listaVendas, listaEstoque);
                     break;
                 case 6:
-                    listaProdutos.alterarPrecos();
+                    listaProdutos.alterarPrecos(listaEstoque);
                     break;
                 case 7:
                     listaVendas.mostrar();
@@ -75,7 +72,7 @@ public class Menu {
             }
             System.out.println("Escolha uma opção");
             opcao = sc.nextInt();
-
         }
+        sc.close();
     }
 }

@@ -39,7 +39,7 @@ public class ListaProdutos {
 
     public void adicionarProduto(ListaEstoque listaEstoque){
 
-        System.out.println("Codigo:");
+        System.out.print("Codigo: ");
         int codigo = sc.nextInt();
 
         if (!taVazia()) {
@@ -58,19 +58,19 @@ public class ListaProdutos {
             }
         }
 
-        System.out.println("Descrição:");
+        System.out.print("Descrição: ");
         String descricao = sc.next();
 
-        System.out.println("Marca:");
+        System.out.print("Marca: ");
         String marca = sc.next();
 
-        System.out.println("Valor de Entrada:");
+        System.out.print("Valor de Entrada: ");
         double valorEntrada = sc.nextFloat();
 
-        System.out.println("Valor de Saida:");
+        System.out.print("Valor de Saida: ");
         double valorSaida = sc.nextFloat();
 
-        System.out.println("Quantidade no Estoque:");
+        System.out.print("Quantidade no Estoque: ");
         int qntdEstoque = sc.nextInt();
 
         inserir(new Produto(descricao, codigo, marca, valorEntrada, valorSaida, qntdEstoque));
@@ -129,12 +129,12 @@ public class ListaProdutos {
             System.out.println("Lista vazia!");
         } else {
             Produto auxiliar = inicio;
-            System.out.println("Codigo do produto a ser reposto:");
+            System.out.print("Codigo do produto a ser reposto: ");
             int produtoRepor = sc.nextInt();
 
             while (auxiliar!=null) {
                 if (auxiliar.getCodigo()==produtoRepor) {
-                    System.out.println("Produto encontrado. Quantos produtos a adicionar no estoque?");
+                    System.out.print("Produto encontrado. Quantos produtos a adicionar no estoque? ");
                     int qntdRepor = sc.nextInt();
                     auxiliar.setQntdEstoque(auxiliar.getQntdEstoque()+qntdRepor);
 
@@ -156,12 +156,12 @@ public class ListaProdutos {
             System.out.println("Lista vazia!");
         } else {
             Produto auxiliar = inicio;
-            System.out.println("Código do produto a ser vendido:");
+            System.out.print("Código do produto a ser vendido: ");
             int produtoVender = sc.nextInt();
 
             while (auxiliar!=null) {
                 if (auxiliar.getCodigo()==produtoVender) {
-                    System.out.println("Produto encontrado. Quantos unidades a serem vendidas?");
+                    System.out.print("Produto encontrado. Quantos unidades a serem vendidas? ");
                     int qntdVenda = sc.nextInt();
                     if (qntdVenda > auxiliar.getQntdEstoque() || qntdVenda<=0) {
                         System.out.println("Quantidade Invalida");
@@ -174,7 +174,7 @@ public class ListaProdutos {
 
                         listaEstoque.inserir(new Estoque("Saida(Venda)", new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), qntdVenda));
 
-                        listaVenda.inserirVenda(new Venda(auxiliar, qntdVenda, dataHora.format(fmt)));
+                        listaVenda.inserirVenda(new Venda(new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), qntdVenda, dataHora.format(fmt)));
 
                         break;
                     }
@@ -187,18 +187,43 @@ public class ListaProdutos {
         }
     }
 
-    public void alterarPrecos() {
+    public void alterarPrecos(ListaEstoque listaEstoque) {
         if(taVazia()) {
             System.out.println("Lista vazia!");
         } else {
-            System.out.println("Porcentagem a ser alterada: ");
-            double taxa = sc.nextDouble();
+            System.out.print("Alterar os preços individualmente (1) ou aplicar uma porcentagem em todos (2)? ");
+            int opcao = sc.nextInt();
+            if (opcao==1) {
+                System.out.print("Codigo do produto para alterar o preço: ");
+                int cod = sc.nextInt();
 
-            Produto auxiliar = inicio;
-            while (auxiliar!=null) {
-                auxiliar.setValorSaida(taxa * auxiliar.getValorSaida());
-                auxiliar = auxiliar.prox;
+                Produto auxiliar = inicio;
+                while (auxiliar != null) {
+                    if (auxiliar.getCodigo()==cod) {
+                        System.out.print("Novo preço: ");
+                        double novoPreco = sc.nextDouble();
+                        auxiliar.setValorSaida(novoPreco);
+
+                        listaEstoque.inserir(new Estoque("Alteração", new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), 0));
+                        break;
+                    }
+                    auxiliar = auxiliar.prox;
+                }
+                if (auxiliar==null) {
+                    System.out.println(" Produto não encontrado.");
+                }
+            } else {
+                System.out.print("Porcentagem a ser alterada: ");
+                double porcentagem = sc.nextDouble();
+
+                Produto auxiliar = inicio;
+                while (auxiliar!=null) {
+                    auxiliar.setValorSaida(( porcentagem / 100) * auxiliar.getValorSaida());
+                    listaEstoque.inserir(new Estoque("Alteração", new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), 0));
+                    auxiliar = auxiliar.prox;
+                }
             }
+
         }
     }
 }
