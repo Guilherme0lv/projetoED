@@ -5,7 +5,7 @@ public class Venda {
     private Produto vendido;
     private int qntd;
     private String dataHora;
-    Venda prox;
+    private Venda prox;
 
     public Venda(Produto vendido, int qntd, String dataHora) {
         this.vendido = vendido;
@@ -36,6 +36,14 @@ public class Venda {
 
     public void setDataHora(String dataHora) {
         this.dataHora = dataHora;
+    }
+
+    public Venda getProx() {
+        return prox;
+    }
+
+    public void setProx(Venda prox) {
+        this.prox = prox;
     }
 
     @Override

@@ -3,8 +3,8 @@ package projetoED;
 public class Estoque {
 
     private String movimento;
-    Produto produto;
-    Estoque prox;
+    private Produto produto;
+    private Estoque prox;
     private int qntdAlterada;
 
     public Estoque(String movimento, Produto produto, int qntdAlterada) {
@@ -36,6 +36,14 @@ public class Estoque {
 
     public void setQntdAlterada(int qntdAlterada) {
         this.qntdAlterada = qntdAlterada;
+    }
+
+    public Estoque getProx() {
+        return prox;
+    }
+
+    public void setProx(Estoque prox) {
+        this.prox = prox;
     }
 
     public String toString() {

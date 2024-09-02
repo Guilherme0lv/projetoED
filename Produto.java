@@ -8,7 +8,7 @@ public class Produto {
     private double valorEntrada;
     private double valorSaida;
     private int qntdEstoque;
-    Produto prox;
+    private Produto prox;
 
     public Produto(String descricao, int codigo, String marca, double valorEntrada, double valorSaida, int qntdEstoque) {
         this.descricao = descricao;
@@ -68,6 +68,13 @@ public class Produto {
         this.qntdEstoque = qntdEstoque;
     }
 
+    public Produto getProx() {
+        return prox;
+    }
+
+    public void setProx(Produto prox) {
+        this.prox = prox;
+    }
 
     @Override
     public String toString() {

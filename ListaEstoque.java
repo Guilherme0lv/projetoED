@@ -14,7 +14,7 @@ public class ListaEstoque {
             inicio = novo;
             fim = novo;
         } else {
-            fim.prox = novo;
+            fim.setProx(novo);
             fim = novo;
         }
     }
@@ -27,7 +27,7 @@ public class ListaEstoque {
             System.out.println("Estoque:");
             while (auxiliar!= null) {
                 System.out.println(auxiliar);
-                auxiliar = auxiliar.prox;
+                auxiliar = auxiliar.getProx();
             }
         }
     }

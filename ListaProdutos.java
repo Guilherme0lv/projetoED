@@ -18,7 +18,7 @@ public class ListaProdutos {
             inicio = novo;
             fim = novo;
         } else {
-            fim.prox = novo;
+            fim.setProx(novo);
             fim = novo;
         }
     }
@@ -31,7 +31,7 @@ public class ListaProdutos {
             System.out.println("Lista: ");
             while (auxiliar != null) {
                 System.out.println(auxiliar);
-                auxiliar = auxiliar.prox;
+                auxiliar = auxiliar.getProx();
             }
             System.out.println(" ");
         }
@@ -51,7 +51,7 @@ public class ListaProdutos {
                     existe = true;
                     break;
                 }
-                auxiliar = auxiliar.prox;
+                auxiliar = auxiliar.getProx();;
             }
             if (existe) {
              return;
@@ -86,14 +86,14 @@ public class ListaProdutos {
             System.out.println("Lista vazia!");
         } else {
             while (aux1!= fim) {
-                Produto aux2 = aux1.prox;
+                Produto aux2 = aux1.getProx();
                 while (aux2 != null) {
                     if (aux1.getDescricao().compareToIgnoreCase(aux2.getDescricao())>0) {
                         troca(aux1, aux2);
                     }
-                    aux2 = aux2.prox;
+                    aux2 = aux2.getProx();
                 }
-                aux1 = aux1.prox;
+                aux1 = aux1.getProx();
             }
         }
     }
@@ -143,7 +143,7 @@ public class ListaProdutos {
                             auxiliar.getQntdEstoque()), qntdRepor));
                     break;
                 }
-                auxiliar = auxiliar.prox;
+                auxiliar = auxiliar.getProx();
             }
             if(auxiliar==null) {
                 System.out.println("Produto não encontrado");
@@ -179,7 +179,7 @@ public class ListaProdutos {
                         break;
                     }
                 }
-                auxiliar = auxiliar.prox;
+                auxiliar = auxiliar.getProx();
             }
             if(auxiliar==null) {
                 System.out.println("Produto não encontrado");
@@ -214,7 +214,7 @@ public class ListaProdutos {
                             listaEstoque.inserir(new Estoque("Alteração", new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), 0));
                             break;
                         }
-                        auxiliar = auxiliar.prox;
+                        auxiliar = auxiliar.getProx();
                     }
                     if (auxiliar==null) {
                         System.out.println(" Produto não encontrado.");
@@ -228,7 +228,7 @@ public class ListaProdutos {
                     while (auxiliar!=null) {
                         auxiliar.setValorSaida(( porcentagem / 100) * auxiliar.getValorSaida());
                         listaEstoque.inserir(new Estoque("Alteração", new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), 0));
-                        auxiliar = auxiliar.prox;
+                        auxiliar = auxiliar.getProx();
                     }
                     break;
             }

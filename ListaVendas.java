@@ -10,7 +10,7 @@ public class ListaVendas {
             inicio = novo;
             fim = novo;
         } else {
-            fim.prox = novo;
+            fim.setProx(novo);
             fim = novo;
         }
     }
@@ -23,7 +23,7 @@ public class ListaVendas {
             System.out.println("Lista de vendas:");
             while (auxiliar!=null) {
                 System.out.println(auxiliar);
-                auxiliar = auxiliar.prox;
+                auxiliar = auxiliar.getProx();
 
             }
             System.out.println(" ");
