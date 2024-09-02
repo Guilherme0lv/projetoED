@@ -193,37 +193,45 @@ public class ListaProdutos {
         } else {
             System.out.print("Alterar os preços individualmente (1) ou aplicar uma porcentagem em todos (2)? ");
             int opcao = sc.nextInt();
-            if (opcao==1) {
-                System.out.print("Codigo do produto para alterar o preço: ");
-                int cod = sc.nextInt();
 
-                Produto auxiliar = inicio;
-                while (auxiliar != null) {
-                    if (auxiliar.getCodigo()==cod) {
-                        System.out.print("Novo preço: ");
-                        double novoPreco = sc.nextDouble();
-                        auxiliar.setValorSaida(novoPreco);
-
-                        listaEstoque.inserir(new Estoque("Alteração", new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), 0));
-                        break;
-                    }
-                    auxiliar = auxiliar.prox;
-                }
-                if (auxiliar==null) {
-                    System.out.println(" Produto não encontrado.");
-                }
-            } else {
-                System.out.print("Porcentagem a ser alterada: ");
-                double porcentagem = sc.nextDouble();
-
-                Produto auxiliar = inicio;
-                while (auxiliar!=null) {
-                    auxiliar.setValorSaida(( porcentagem / 100) * auxiliar.getValorSaida());
-                    listaEstoque.inserir(new Estoque("Alteração", new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), 0));
-                    auxiliar = auxiliar.prox;
-                }
+            Produto auxiliar;
+            if(opcao < 1 || opcao >2 ) {
+                System.out.println("Opção inválida");
+                return;
             }
+            switch (opcao) {
+                case 1:
+                    System.out.print("Codigo do produto para alterar o preço: ");
+                    int cod = sc.nextInt();
 
+                    auxiliar = inicio;
+                    while (auxiliar != null) {
+                        if (auxiliar.getCodigo()==cod) {
+                            System.out.print("Novo preço: ");
+                            double novoPreco = sc.nextDouble();
+                            auxiliar.setValorSaida(novoPreco);
+
+                            listaEstoque.inserir(new Estoque("Alteração", new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), 0));
+                            break;
+                        }
+                        auxiliar = auxiliar.prox;
+                    }
+                    if (auxiliar==null) {
+                        System.out.println(" Produto não encontrado.");
+                    }
+                    break;
+                case 2:
+                    System.out.print("Com base no valor, informe a % ser alterada: ");
+                    double porcentagem = sc.nextDouble();
+
+                    auxiliar = inicio;
+                    while (auxiliar!=null) {
+                        auxiliar.setValorSaida(( porcentagem / 100) * auxiliar.getValorSaida());
+                        listaEstoque.inserir(new Estoque("Alteração", new Produto(auxiliar.getDescricao(), auxiliar.getCodigo(), auxiliar.getMarca(), auxiliar.getValorEntrada(), auxiliar.getValorSaida(), auxiliar.getQntdEstoque()), 0));
+                        auxiliar = auxiliar.prox;
+                    }
+                    break;
+            }
         }
     }
 }

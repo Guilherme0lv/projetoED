@@ -8,7 +8,7 @@ public class Menu {
     public static void getMenu() {
         System.out.println("***************************"
                 + "\n"
-                + "********   MENU   *********"
+                + "****   MOACYR'S TECH   ****"
                 + "\n"
                 + "***************************"
                 + "\n"
@@ -42,6 +42,10 @@ public class Menu {
         System.out.println("Escolha uma opção");
         int opcao = sc.nextInt();
 
+        if (!(opcao>0 && opcao<10)) {
+            System.out.println("Opção invalida!");
+        }
+
         while (opcao!=9) {
             switch (opcao) {
                 case 1:
@@ -72,6 +76,10 @@ public class Menu {
             }
             System.out.println("Escolha uma opção");
             opcao = sc.nextInt();
+
+            if (!(opcao>0 && opcao<10)) {
+                System.out.println("Opção invalida!");
+            }
         }
         sc.close();
     }

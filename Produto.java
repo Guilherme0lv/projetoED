@@ -20,7 +20,6 @@ public class Produto {
         this.prox = null;
     }
 
-
     public int getCodigo() {
         return codigo;
     }
